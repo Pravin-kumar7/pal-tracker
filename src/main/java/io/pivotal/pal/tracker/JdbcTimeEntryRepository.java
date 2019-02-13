@@ -1,12 +1,12 @@
 package io.pivotal.pal.tracker;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.sql.Date;
@@ -15,10 +15,10 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 public class JdbcTimeEntryRepository implements TimeEntryRepository {
 
-    MysqlDataSource dataSource;
+    DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
-    public JdbcTimeEntryRepository(MysqlDataSource dataSource) {
+    public JdbcTimeEntryRepository(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
